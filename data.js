@@ -1,4 +1,18 @@
-//task 1-4
+//task 1-4 
+//Create an ourTeam variable and add an object as a value. Add a name (add a name for the team),
+//and a members (an array where the members and their details go) key to the object.
+
+//In the members array, (the details of) each member is an object with following keys filled: name (string),
+//birthday (object with three keys: year, month, day), location (object, keys: country, city), codingLevel (integer between 0 and 99).
+
+//Create a favorites key (object) in each member's array.
+//Add the favorite movies list from the solo project solutions to a favMovies key.
+//Add the favorite books list from the solo project solutions to a favBooks key.
+//Make sure your new objects contain every data from the solo project as a key.
+
+//In the members array of the ourTeam variable, change the codingLevels type to an object
+//which contains the numeric value of the coding knowledge and the seniority of the member.
+
 let ourTeam={
 	name:"Pink Panther",
 	members:[
@@ -518,9 +532,11 @@ let ourTeam={
 }
 
 
-
-
 //task 5
+//Add a new review key to each book, movie, and song object. As the value of these keys, each member must write why they like that book, movie,
+//or song and why they recommend it. Also, remove the following keys and their values: the description keys of the movies, the isNewerThan2000 
+//and age keys of the books.
+
 for (let i = 0; i < ourTeam.members.length; i++) {
 	for(let j = 0; j < ourTeam.members[i].favorites.favBooks.length; j++){
         delete ourTeam.members[i].favorites.favBooks[j].isNewerThan2000;
@@ -531,11 +547,10 @@ for (let i = 0; i < ourTeam.members.length; i++) {
 	}
 }
 
-//  for (let i = 0;i<ourTeam.members.length;i++) {
-//  console.log(ourTeam.members[i].favorites.favMovies);
-//  }
 
 //task 6
+//Calculate the average age (in an averageAge variable) and average coding level (into an averageCodingLevel).
+
 let averageAge=0;
 let averageCodingLevel=0;
 let date = new Date();
@@ -544,15 +559,14 @@ console.log(date);
 let validMemberNumber = ourTeam.members.length;
 for(let i = 0; i < ourTeam.members.length; i++){
 	if( year < ourTeam.members[i].birthday.year) {
-		console.log("Anul nasterii nu e valid")
+		console.log("Anul nasterii nu e valid");
 		validMemberNumber--;
 	} else {
 		averageAge += year-ourTeam.members[i].birthday.year;
 	}
-	
 }
 averageAge = averageAge/validMemberNumber;
-// console.log(averageAge);
+
 
 validMemberNumber = ourTeam.members.length;
 for(let i=0;i<ourTeam.members.length;i++){
@@ -564,9 +578,13 @@ for(let i=0;i<ourTeam.members.length;i++){
 	}
 }
 averageCodingLevel=averageCodingLevel/validMemberNumber;
-// console.log(averageCodingLevel);
+
 
 //task 7
+//Find the youngest member (calculate it as a value of a youngestMember variable). 
+//Important: you only have to compare the values of the year keys for each member. 
+//If there are more than one members from the same year, you can decide which member is the youngest.
+
 let youngestMember;
 let max=1000;
 for(let i=0;i<ourTeam.members.length;i++){
@@ -574,12 +592,16 @@ for(let i=0;i<ourTeam.members.length;i++){
 		max=ourTeam.members[i].birthday.year;
 		youngestMember=ourTeam.members[i].name;
 	} else {
-		console.log("Anul nasterii nu este valid.")
+		console.log("Anul nasterii nu este valid.");
 	}
 }
-// console.log(youngestMember);
+
 
 //task 8
+//Find the oldest member (calculate it as a value of an oldestMember variable). 
+//Important: you only have to compare the values of the year keys for each member. 
+//If there are more than one members from the same year, you can decide which member is the oldest.
+
 let oldestMember;
 let min=3000;
 for(let i=0;i<ourTeam.members.length;i++){
@@ -587,49 +609,27 @@ for(let i=0;i<ourTeam.members.length;i++){
 		min=ourTeam.members[i].birthday.year;
 		oldestMember=ourTeam.members[i].name;
 	} else {
-		console.log("Anul nasterii nu este valid.")
+		console.log("Anul nasterii nu este valid.");
 	}
 }
-// console.log(oldestMember);
 
-//task 9a
+
+//task 9
+//Find out if some people are from the same location.
+
 let location= {};
-
 for(let i=0;i<ourTeam.members.length;i++) {
 	if (location[ourTeam.members[i].location.city] === undefined) {
 		location[ourTeam.members[i].location.city] = [ourTeam.members[i].name];
 	} else {
-		//location[ourTeam.members[i].location.city][location[ourTeam.members[i].location.city].length] = ourTeam.members[i].name;
-		location[ourTeam.members[i].location.city].push(ourTeam.members[i].name)
+		location[ourTeam.members[i].location.city].push(ourTeam.members[i].name);
 	}
 }
-// console.log(location)
 
-//task 9b
-// let location={
-// 	Iasi:[],
-// 	Craiova:[],
-// 	Cluj:[],
-// }
-// let a=0;
-// let b=0;
-// let c=0;
-// for(let i=0;i<ourTeam.members.length;i++){
-// 	if(ourTeam.members[i].location.city==="Iasi"){
-// 		location.Iasi[a]=ourTeam.members[i].name;
-// 	    a++;
-// 	}
-// 	if(ourTeam.members[i].location.city==="Craiova"){
-// 		location.Craiova[b]=ourTeam.members[i].name;
-// 	    b++;
-// 	}
-// 	if(ourTeam.members[i].location.city==="Cluj"){
-// 		location.Cluj[c]=ourTeam.members[i].name;
-// 	    c++;
-// 	}
-// }
-// console.log(location);
-//task 10a
+
+//task 10
+//Common music styles
+
 let commonGenres = {};
 for ( let i = 0; i < ourTeam.members.length; i++) {
 	for ( let j = 0; j < ourTeam.members[i].favorites.favSongs.length; j++) {
@@ -638,55 +638,13 @@ for ( let i = 0; i < ourTeam.members.length; i++) {
 			if(commonGenres[genres[k]] === undefined) {
 				commonGenres[genres[k]] = 1;
 			} else {
-				commonGenres[genres[k]]++
+				commonGenres[genres[k]]++;
 			}
 		}
 	}
 }
-console.log(commonGenres)
+console.log(commonGenres);
 
-//task 10b
-// let commonGenres={
-// 	dance:0,
-// 	electronic:0,
-// 	pop:0,
-// 	trap:0,
-// 	rap:0,
-//     rock:0,
-//     jazz:0,
-// 	alternative:0,
-// 	indie:0
-// }
-// for(let i=0;i<ourTeam.members.length;i++){
-// 	for(let j=0;j<ourTeam.members[i].favorites.favSongs.length;j++){
-// 		for(let k=0;k<ourTeam.members[i].favorites.favSongs[j].genres.length;k++){
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Dance")
-// 			commonGenres.dance++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Electronic")
-// 			commonGenres.electronic++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Pop")
-// 			commonGenres.pop++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Trap")
-// 			commonGenres.trap++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Rap")
-// 			commonGenres.rap++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Rock")
-// 			commonGenres.rock++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Jazz")
-// 			commonGenres.jazz++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Alternative")
-// 			commonGenres.alternative++;
-// 			if(ourTeam.members[i].favorites.favSongs[j].genres[k]==="Indie")
-// 			commonGenres.indie++;
-// 	    }
-//     }
-// }
-// console.log(commonGenres);
-
-
-
-
-// DON'T MODIFY THE CODE BELOW THIS LINE
 
 let toExport;
 
@@ -700,7 +658,7 @@ try {
 		{ name: "oldestMember", content: oldestMember, type: "string" },
 		{ name: "location", content: location, type: "object" },
 		{ name: "commonGenres", content: commonGenres, type: "object" },
-		{ name: "moreStats", content: ourTeam.moreStats, type: "object" } // remove the block comment from this line if you want to make the last optional task */
+		{ name: "moreStats", content: ourTeam.moreStats, type: "object" }
 	]
 
 } catch (error) {
